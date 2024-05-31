@@ -14,6 +14,7 @@ import { Check } from "@mui/icons-material";
 
 export default function Collection(props : any) {
   const router = useRouter();
+  const hostUrl = process.env['NEXT_PUBLIC_HOST']
 
   const [isPending, startTransition] = useTransition();
   const [isPageLoading, setIsPageLoading] = useState(false);
@@ -42,7 +43,9 @@ export default function Collection(props : any) {
   const deleteListCallback = async(listId : any) => {
     setIsDeleteButtonLoading(true)
 
-    const response = await fetch('http://localhost:3000/api/list',{
+    const url = `${hostUrl}/api/list`
+
+    const response = await fetch(url, {
         method: 'DELETE',
         body: JSON.stringify(listId),
         headers: {
@@ -88,7 +91,9 @@ export default function Collection(props : any) {
   const handleAddList = async(formData: any) => {
     setIsAddButtonLoading(true)
 
-    const response = await fetch('http://localhost:3000/api/list',{
+    const url = `${hostUrl}/api/list`
+
+    const response = await fetch(url, {
         method: 'POST',
         body: JSON.stringify(formData),
         headers: {

@@ -18,6 +18,8 @@ import project_constants from '@/constants';
 
 export default function DataTable( props : any ) {
   const router = useRouter();
+  const hostUrl = process.env['NEXT_PUBLIC_HOST']
+
   const [isPending, startTransition] = useTransition();
   const [isDeleteButtonLoading, setIsDeleteButtonLoading] = useState(false)
   const [isEditButtonLoading, setIsEditButtonLoading] = useState(false)
@@ -56,7 +58,9 @@ export default function DataTable( props : any ) {
   const handleEditRow = async(formData: any) => {
     setIsEditButtonLoading(true)
 
-    const response = await fetch(`http://localhost:3000/api/activity/${rowId}`,{
+    const url = `${hostUrl}/api/activity/${rowId}`
+
+    const response = await fetch(url, {
       method: 'PUT',
       body: JSON.stringify(formData),
       headers: {
@@ -103,7 +107,9 @@ export default function DataTable( props : any ) {
   const handleDeleteRow = async() => {
     setIsDeleteButtonLoading(true)
 
-    const response = await fetch(`http://localhost:3000/api/activity/${rowId}`, {
+    const url = `${hostUrl}/api/activity/${rowId}`
+
+    const response = await fetch(url, {
       method: 'DELETE',
       // body: JSON.stringify(rowId),
       headers: {
@@ -135,7 +141,9 @@ export default function DataTable( props : any ) {
     const formData = { completed: !cellValues.row.completed }
     cellValues.row.completed = !cellValues.row.completed
 
-    const response = await fetch(`http://localhost:3000/api/activity/${cellValues.row.id}`,{
+    const url = `${hostUrl}/api/activity/${cellValues.row.id}`
+
+    const response = await fetch(url, {
       method: 'PUT',
       body: JSON.stringify(formData),
       headers: {
