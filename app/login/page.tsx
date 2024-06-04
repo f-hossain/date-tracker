@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { Typography } from '@mui/material';
 import Image from 'next/image';
+import logoImg from '../assets/logo.png'
 import AuthForm from "../components/auth-form"
 
 export default function LoginForm() {
@@ -12,7 +13,7 @@ export default function LoginForm() {
       <div className="flex flex-col place-content-center gap-3 w-1/5">
           <div className="flex flex-col items-center gap-16 pb-4">
             <Image
-            src="/logo.png"
+            src={logoImg}
             width={75}
             height={75}
             alt="logo"
