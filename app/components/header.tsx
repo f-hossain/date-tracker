@@ -12,8 +12,11 @@ import MenuItem from '@mui/material/MenuItem';
 import { FavoriteBorderRounded } from '@mui/icons-material';
 import { grey } from '@mui/material/colors';
 
-function Header() {
+function Header(props: any) {
+
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  // TODO: refactor this var and other occurences to isViewMode so the logic makes more sense
+  const isOwner = props.isOwner ?? true
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -89,9 +92,15 @@ function Header() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}></Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+            {/* <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar sx={{ bgcolor: grey[300] }} />
-            </IconButton>
+            </IconButton> */}
+
+            { isOwner? 
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar sx={{ bgcolor: grey[300] }} />
+              </IconButton> : <div></div>
+            }
 
             <Menu
               elevation={0}

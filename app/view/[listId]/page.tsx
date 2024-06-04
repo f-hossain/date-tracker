@@ -39,7 +39,7 @@ export default async function SharedDataPage( { params } : { params: { listId: s
     
     // <div className="bg-rose-100">
     <div>
-      <Header />
+      <Header isOwner={false} />
       < ActivityView listId={params.listId} title={listTitle} rows={activities} isOwner={false}/>
     </div>
   )
