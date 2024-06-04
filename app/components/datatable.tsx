@@ -312,6 +312,7 @@ export default function DataTable( props : any ) {
         localeText={{
           noRowsLabel: 'there are no activities to display :c add one !!'
         }}
+        autoHeight={true}
         sx={{
           "&.MuiDataGrid-root .MuiDataGrid-cell:focus-within": {
              outline: "none !important",
