@@ -58,7 +58,7 @@ export default function AuthForm() {
       showLinks={false}
       providers={[]}
       // TODO: REMOVE LATER - HARDCODING AS A TEST 
-      redirectTo="https://lovelist.netlify.app/"
+      redirectTo={callbackUrl}
     />
   )
 }
