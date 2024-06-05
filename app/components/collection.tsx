@@ -91,7 +91,7 @@ export default function Collection(props : any) {
   const handleAddList = async(formData: any) => {
     setIsAddButtonLoading(true)
 
-    const url = `${hostUrl}/api/list`
+    const url = `/api/list`
 
     const response = await fetch(url, {
         method: 'POST',
