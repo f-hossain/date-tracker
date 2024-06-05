@@ -18,7 +18,6 @@ import project_constants from '@/constants';
 
 export default function ActivityView( props : any) {
   const router = useRouter();
-  const hostUrl = process.env['NEXT_PUBLIC_HOST']
 
   const [isPending, startTransition] = useTransition();
   const [isAddButtonLoading, setIsAddButtonLoading] = useState(false)
@@ -48,7 +47,7 @@ export default function ActivityView( props : any) {
   const handleAddRow = async(formData: any) => {
     setIsAddButtonLoading(true)
     
-    const url = `${hostUrl}/api/activity/${props.listId}`
+    const url = `/api/activity/${props.listId}`
 
     const response = await fetch(url ,{
         method: 'POST',
