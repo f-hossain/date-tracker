@@ -2,6 +2,7 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
 import { Database } from "@/database.types";
 import Collection from "./components/collection";
+import LoadingOverlay from "./components/loading-overlay";
 
 async function getLists() {
   const supabase = createServerComponentClient<Database>({ cookies })
@@ -17,10 +18,16 @@ async function getLists() {
 
 export default async function Home() {
 
-  const lists = await getLists()
-  // const lists : any = []
+  let loading = true;
+
+  const lists = await getLists().then( val => {
+    loading = false;
+    return val
+  })
 
   return (
-    <Collection lists={lists} />
+    <div>
+      { loading ? <LoadingOverlay /> : <Collection lists={lists} /> }
+    </div>
   );
 }
